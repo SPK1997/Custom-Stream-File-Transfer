@@ -73,8 +73,8 @@
     **(d) _destroy:** <br/>
     This method will take an error object and callback function as paramater. The _destroy method is called under 3 conditions: when destroy method is called on the instance of a write stream class or when callback function of the _construct method (point (b)) is called with some error or when the callback function of the _write method (point (c)) is called with some error. In _destroy method we call the callback function and close file handlers if any opened. If the callback function is called without any error object or error object is null then one event will emit named 'close' and if the callback function is called with some error object then two events will emit named 'error' and 'close'.
 
-**How to use the read stream class and write stream class ?**
-Code:-
+**How to use the read stream class and write stream class ?** <br/>
+
     
     // mention the filename in input option
     // file will be looked for in Source folder
@@ -119,15 +119,21 @@ Code:-
     });
 
 
-**How backpressure is handled ?**
-Backpressure handling means a process in which the write stream can inform the read stream to pause its reading because the rate of writing is lower than rate of reading. And after the buffer for writing is completely emptied then resume reading again. Now how to know that backpressure has developed. If the chunk that comes to write stream is higher than its writableHighWaterMark then it is a confirmation that backpressure has developed. We have handled that in the above code using events. Go through the comments to get to know how it is done.
+**What is backpressure ?** <br/>
+Backpressure handling means a process in which the write stream can inform the read stream to pause its reading because the rate of writing is lower than rate of reading. And after the buffer for writing is completely emptied then resume reading again.
 
-**Node.js documentation links:-**<br/>
+**How to know backpressure has developed ?** <br/> 
+If the chunk/buffer to be written that comes to write stream is higher in size than the write stream's writableHighWaterMark then it is a confirmation that backpressure has developed. 
+
+**Is it handled in our code ?**
+We have handled that in the above code using events. Go through the *How to use the read stream class and write stream class ?* section above.
+
+**Node.js documentation links:-** <br/>
 <a href="https://nodejs.org/docs/latest/api/buffer.html">Buffer</a><br/>
 <a href="https://nodejs.org/docs/latest/api/fs.html">File handling</a><br/>
 <a href="https://nodejs.org/docs/latest/api/stream.html">Stream</a><br/>
 
-**Article link:-**<br/>
+**Article link:-** <br/>
 <a href="https://medium.com/@smrutisagarpattanaik1997/node-js-buffers-navigating-binary-data-6a997b0a5c22">Buffer</a><br/>
 
 

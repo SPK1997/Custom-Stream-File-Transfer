@@ -1,18 +1,21 @@
 ### CUSTOM STREAM TO TRANSFER FILE
 What does this project do ?
-- This project takes any file present in Source folder and transfers the file to Destination folder.
+- This project takes any file present in Source folder and copy the content of the file to another file in Destination folder.
 
 How to use the project ?
 - Make sure node.js is installed in your system. <a href="https://nodejs.org/en/download/prebuilt-installer" target="_blank">Installation Link</a>
 - There is a Source folder and a Destination folder in the project. 
-- Put any file you want to transfer to Destination folder inside Source folder. The file size can be anything. The file type can be anything. Check the below section if you want to create a large text file in Source folder.
+- For now there will be a source.txt file present in Source folder and a destination.txt file present in Destination folder. Delete them if you want to.
+- Put any file you want to copy to Destination folder inside Source folder. The file size can be anything. The file type can be anything.
 - There is a .env file in project.
 - In .env file mention the values for variables SOURCE_FILE and DESTINATION_FILE. The values have to contain the file name and its extension.
     Eg:- source.txt
+- In .env whatever source file name you mention that file has to be present in Source folder.
+- In .env whatever destination file name you mention that file will be created in Destination folder and will have contents of source file copied to it.
 - Open the command prompt from the root of the project folder.
 - Type the command 'npm install' and press enter. Wait for it to complete.
 - Type the command 'npm start' and press enter. Wait for it to complete.
-- Go to Destination folder and you will find that file has been transferred.
+- Go to Destination folder and you will find that the file has been transferred.
 
 Want to create a large text file in Source folder of project ?
 - If not already done then make sure node.js is installed in your system. <a href="https://nodejs.org/en/download/prebuilt-installer" target="_blank">Installation Link</a>

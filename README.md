@@ -63,6 +63,7 @@ How is a write stream class implemented ?
 
 How to use the read stream class and write stream class ?
 Code:-
+    
     // mention the filename in input option
     // file will be looked for in Source folder
     const rs = new ReadStream({ filename: process.env.SOURCE_FILE });

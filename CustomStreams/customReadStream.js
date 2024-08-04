@@ -7,7 +7,6 @@ class ReadStream extends Readable {
         this.fileHandler;
         this.fileSize;
         this.positionToRead = 0;
-        this.nbReads = 0;
         this.filename = iOptions.filename || 'source.txt';
     }
 
@@ -27,12 +26,12 @@ class ReadStream extends Readable {
             if (this.positionToRead >= 0) {
                 let buffer = Buffer.alloc(size);
                 await this.fileHandler.read(buffer, 0, size, this.positionToRead);
-                if (this.fileSize <= buffer.length) {
+                if ((this.fileSize - this.positionToRead) <= buffer.length) {
                     this.positionToRead = -1;
-                    this.push(buffer.slice(0, this.fileSize));
+                    let bufferToPush = buffer.slice(0, this.fileSize);
+                    this.push(bufferToPush);
                 } else {
-                    this.nbReads++;
-                    this.positionToRead = this.fileSize - (this.nbReads * size);
+                    this.positionToRead += buffer.length;
                     this.push(buffer);
                 }
             } else {

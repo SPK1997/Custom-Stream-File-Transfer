@@ -35,7 +35,7 @@
 
 **Want to create a large text file in Source folder of project ?**
 - If not already done then make sure node.js is installed in your system. <a href="https://nodejs.org/en/download/prebuilt-installer" target="_blank">Installation Link</a>
-- If not already done then open the command promp from the root of the project folder.
+- If not already done then open the command prompt from the root of the project folder.
 - Type the command 'npm run createFile' and press enter. Wait for it to complete.
 - Go to Source folder and you will find that file has been created.
 

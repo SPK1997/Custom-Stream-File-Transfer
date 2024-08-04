@@ -123,8 +123,6 @@ Code:-
 <a href="https://nodejs.org/docs/latest/api/buffer.html">Buffer</a><br/>
 <a href="https://nodejs.org/docs/latest/api/fs.html">File handling</a><br/>
 <a href="https://nodejs.org/docs/latest/api/stream.html">Stream</a><br/>
-<a href="https://nodejs.org/docs/latest/api/stream.html#writable_constructcallback">Custom Read stream class</a><br/>
-<a href="https://nodejs.org/docs/latest/api/stream.html#readable_constructcallback">Custom write stream class</a>
 
 **Article link:-**<br/>
 <a href="https://medium.com/@smrutisagarpattanaik1997/node-js-buffers-navigating-binary-data-6a997b0a5c22">Buffer</a><br/>

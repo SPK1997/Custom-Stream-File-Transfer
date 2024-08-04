@@ -1,8 +1,8 @@
 ### CUSTOM STREAM TO TRANSFER FILE
-What does this project do ?
+**What does this project do ?**
 - This project takes any file present in Source folder and copy the content of the file to another file in Destination folder.
 
-How to use the project ?
+**How to use the project ?**
 - Make sure node.js is installed in your system. <a href="https://nodejs.org/en/download/prebuilt-installer" target="_blank">Installation Link</a>
 - There is a Source folder and a Destination folder in the project. 
 - For now there will be a source.txt file present in Source folder and a destination.txt file present in Destination folder. Delete them if you want to.
@@ -17,20 +17,20 @@ How to use the project ?
 - Type the command 'npm start' and press enter. Wait for it to complete.
 - Go to Destination folder and you will find that the file has been transferred.
 
-Want to create a large text file in Source folder of project ?
+**Want to create a large text file in Source folder of project ?**
 - If not already done then make sure node.js is installed in your system. <a href="https://nodejs.org/en/download/prebuilt-installer" target="_blank">Installation Link</a>
 - If not already done then open the command promp from the root of the project folder.
 - Type the command 'npm run createFile' and press enter. Wait for it to complete.
 - Go to Source folder and you will find that file has been created.
 
-What is the objective of this project ?
+**What is the objective of this project ?**
 - This project explores the concept of stream in node.js
 - There is a CustomStreams folder in the project.
 - This folder contains two javascript files implementing a read stream class and a write stream class.
 - Node.js already provides file read stream and file write stream to read from and write to files. These are present under fs module which is a core module of node.js
 - But this project shows the implementation of custom stream class to get a deeper understanding of the concept.
 
-How is a read stream class implemented ?
+**How is a read stream class implemented ?**
 - Suggest to check the customReadStream.js file on the side while the below explanation is read.
 - It is a normal javaScript class that inherits from Readable class.
 - It has 4 methods:-
@@ -46,7 +46,7 @@ How is a read stream class implemented ?
     (d) _destroy:
     This method will take an error object and callback function as paramater. The _destroy method is called either when destroy method is called on the instance of a read stream class or when callback function of the _construct method (point (b)) is called with some error. In _destroy method we call the callback function and close file handlers if any opened. If the callback function is called without any error object or error object is null then one event will emit named 'close' and if the callback function is called with some error object then two events will emit named 'error' and 'close'.
 
-How is a write stream class implemented ?
+**How is a write stream class implemented ?**
 - Suggest to check the customWriteStream.js file on the side while the below explanation is read.
 - It is a normal javaScript class that inherits from Writable class.
 - It has 4 methods:-
@@ -64,7 +64,7 @@ How is a write stream class implemented ?
     (d) _destroy:
     This method will take an error object and callback function as paramater. The _destroy method is called under 3 conditions: when destroy method is called on the instance of a write stream class or when callback function of the _construct method (point (b)) is called with some error or when the callback function of the _write method (point (c)) is called with some error. In _destroy method we call the callback function and close file handlers if any opened. If the callback function is called without any error object or error object is null then one event will emit named 'close' and if the callback function is called with some error object then two events will emit named 'error' and 'close'.
 
-How to use the read stream class and write stream class ?
+**How to use the read stream class and write stream class ?**
 Code:-
     
     // mention the filename in input option
@@ -110,14 +110,14 @@ Code:-
     });
 
 
-Node.js documentation links:-<br/>
+**Node.js documentation links:-**<br/>
 <a href="https://nodejs.org/docs/latest/api/buffer.html">Buffer</a><br/>
 <a href="https://nodejs.org/docs/latest/api/fs.html">File handling</a><br/>
 <a href="https://nodejs.org/docs/latest/api/stream.html">Stream</a><br/>
 <a href="https://nodejs.org/docs/latest/api/stream.html#writable_constructcallback">Custom Read stream class</a><br/>
 <a href="https://nodejs.org/docs/latest/api/stream.html#readable_constructcallback">Custom write stream class</a>
 
-Article link:-<br/>
+**Article link:-**<br/>
 <a href="https://medium.com/@smrutisagarpattanaik1997/node-js-buffers-navigating-binary-data-6a997b0a5c22">Buffer</a><br/>
 
 

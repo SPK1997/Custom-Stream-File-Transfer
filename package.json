@@ -1,0 +1,16 @@
+{
+  "name": "custom-stream-file-transfer",
+  "version": "1.0.0",
+  "description": "What does this project do ?\r - This project explores the concept of stream in nodejs.\r - Two classes are created. One for read stream and one for write stream.\r - Then using those two classes a read stream is made that reads from a file",
+  "main": "app.js",
+  "scripts": {
+    "createFile": "node create-large-text-file.js",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}

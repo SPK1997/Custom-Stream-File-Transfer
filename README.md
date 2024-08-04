@@ -43,34 +43,34 @@
 - Suggest to check the customReadStream.js file on the side while the below explanation is read.
 - It is a normal javaScript class that inherits from Readable class.
 - It has 4 methods:-<br/>
-    (a) constructor:
+    **(a) constructor:** <br/>
     In this method the parent class constructor is called. Then the parent class constructor will initialize a buffer that the read stream will use to read data from a file. By default it will have some value. This size value can be accessed by **readableHighWaterMark** property on the read stream class instance. You can change it by passing appropriate options to parent constructor. If **readableHighWaterMark** is set to 64KB then at a time you can read less than or equal to 64KB of data from a file.
 
-    (b) _construct:
+    **(b) _construct:** <br/>
     This method will take a callback function as paramter. In this method we open the file we want to read from. Then we call the callback function. If we call the callback function with error then the _destroy method (point (d)) will be called and the _destroy method will take the error object and another callback function as its parameter. The _destroy method will call its callback function with the error object which in turn will emit two events 'error' and 'close'. These events can be subscribed to using the read stream class instance.
 
-    (c) _read:
+    **(c) _read:** <br/>
     This method will take a size value as parameter. This size value is nothing but the size of buffer that is created in constructor method. Using this buffer binary data is read from a file. The buffer is then pushed to the queue of read stream using the push method. This will in turn emit a event 'data'. This event can be subscribed to using the read stream class instance. On subscribing to this event we will get the buffer that was pushed. When reading from a file is finished then null is pushed to the queue of read stream using the push method. This will in turn emit a event 'end'. This event can be subscribed to using the read stream class instance. If anything goes wrong in _read method then the destroy method is called with error object which will emit two events 'error' and 'close' as explained in point (b). These events can be subscribed to using the read stream class instance.
 
-    (d) _destroy:
+    **(d) _destroy:** <br/>
     This method will take an error object and callback function as paramater. The _destroy method is called either when destroy method is called on the instance of a read stream class or when callback function of the _construct method (point (b)) is called with some error. In _destroy method we call the callback function and close file handlers if any opened. If the callback function is called without any error object or error object is null then one event will emit named 'close' and if the callback function is called with some error object then two events will emit named 'error' and 'close'.
 
 **How is a write stream class implemented ?**
 - Suggest to check the customWriteStream.js file on the side while the below explanation is read.
 - It is a normal javaScript class that inherits from Writable class.
 - It has 4 methods:-<br/>
-    (a) constructor:
+    **(a) constructor:** <br/>
     In this method the parent class constructor is called. Then the parent class constructor will initialize a buffer size property named **writableHighWaterMark**. By default it will have some value. You can change it by passing appropriate options to parent constructor.
 
-    (b) _construct:
+    **(b) _construct:** <br/>
     This method will take a callback function as paramter. In this method we open the file we want to write to. Then we call the callback function. If we call the callback function with error then the _destroy method (point (d)) will be called and the _destroy method will take the error object and another callback function as its parameter. The _destroy method will call its callback function with the error object which in turn will emit two events 'error' and 'close'. These events can be subscribed to using the write stream class instance.
 
-    (c) _write:
+    **(c) _write:** <br/>
     This method will be called when write method is called on instance of write stream class. This method will take 3 parameters: chunk, encoding and callback function. Here chunk can be a buffer with binary data or a string. If the chunk is a string then encoding has to be provided so that the string can be converted to binary data and stored in a buffer. In _write method we write to the file using the buffer. Then we call the callback function. If we call the callback function of _write method with error then the _destroy method (point (d)) will be called and the _destroy method will take the error object and another callback function as its parameter. The _destroy method will call its callback function with the error object which in turn will emit two events 'error' and 'close'. These events can be subscribed to using the write stream class instance. If we call the callback function of _write method without error then a 'drain' event may be emitted. The condition for the 'drain' event is that the chunk size is greater than the buffer size that is initialized in constructor method (point (a)). 
     
     In _write method we can create a buffer from chunk paramater if chunk is a string. Also chunk paramater may be a buffer.Then what is the point of buffer size property writableHighWaterMark in constructor method if we are not using it in _write method ? The reason is in _write method we can create buffer of any size so keeping in mind the memory restriction of a system if our created buffer size exceeds the **writableHighWaterMark** which lets say by default set to 16KB by constructor method, some event has to be emitted so that it can signal that hey we have already exceeded the set mark so wait until this buffer is emptied out and written to a file and then create another buffer. This event is named 'drain'
 
-    (d) _destroy:
+    **(d) _destroy:** <br/>
     This method will take an error object and callback function as paramater. The _destroy method is called under 3 conditions: when destroy method is called on the instance of a write stream class or when callback function of the _construct method (point (b)) is called with some error or when the callback function of the _write method (point (c)) is called with some error. In _destroy method we call the callback function and close file handlers if any opened. If the callback function is called without any error object or error object is null then one event will emit named 'close' and if the callback function is called with some error object then two events will emit named 'error' and 'close'.
 
 **How to use the read stream class and write stream class ?**

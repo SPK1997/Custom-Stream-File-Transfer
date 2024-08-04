@@ -119,13 +119,13 @@
     });
 
 
-**What is backpressure ?** <br/>
+**What is backpressure handling ?** <br/>
 Backpressure handling means a process in which the write stream can inform the read stream to pause its reading because the rate of writing is lower than rate of reading. And after the buffer for writing is completely emptied then resume reading again.
 
 **How to know backpressure has developed ?** <br/> 
 If the chunk/buffer to be written that comes to write stream is higher in size than the write stream's writableHighWaterMark then it is a confirmation that backpressure has developed. 
 
-**Is it handled in our code ?**
+**Is backpressure handled in our code ?** <br/>
 We have handled that in the above code using events. Go through the *How to use the read stream class and write stream class ?* section above.
 
 **Node.js documentation links:-** <br/>

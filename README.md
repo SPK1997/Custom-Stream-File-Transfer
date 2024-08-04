@@ -1,6 +1,22 @@
 ### CUSTOM STREAM TO TRANSFER FILE
 **What does this project do ?**
 - This project takes any file present in Source folder and copy the content of the file to another file in Destination folder.
+- This project explores the concept of buffer, stream and file handling in node.js
+- There is a CustomStreams folder in the project.
+- This folder contains two javascript files implementing a read stream class and a write stream class.
+- Node.js already provides file read stream and file write stream to read from and write to files. These are present under fs module which is a core module of node.js
+- But this project shows the implementation of custom stream class to get a deeper understanding of the concept.
+
+**An analogy to understand working of this project**
+- In this project I have created streams and buffers and handled copying of file content from source to destination.
+- Let us say I try to copy greet1.txt (size: 7GB) to greet2.txt (size: 0KB).
+- Consider greet1.txt and greet2.txt files as two lakes.
+    (a) greet1.txt has a lot of water (around 7GB)
+    (b) greet2.txt has no water (0KB)
+- consider a stream as taking water in a bucket (buffer) from greet1.txt lake and put it in greet2.txt lake. In this way we get to put all data from greet1.txt to greet2.txt
+- Now one might ask why cannot I make the bucket (buffer) size as big as the lake and directly take all the water from lake ? The reason is Node.js program is a process and any process will use RAM for allocating memory in run time. So the bucket in our case or the buffer is a part of memory from RAM we allocate to store binary data which is file content in our case.
+- The size of greet1.txt lake is around 7GB and suppose my laptop RAM is 8GB in size so if I make a bucket or buffer as big as greet1.txt then my laptop will be done for good🙂
+- The memory restriction of a system is why we keep our bucket size small.
 
 **How to use the project ?**
 - Make sure node.js is installed in your system. <a href="https://nodejs.org/en/download/prebuilt-installer" target="_blank">Installation Link</a>
@@ -22,13 +38,6 @@
 - If not already done then open the command promp from the root of the project folder.
 - Type the command 'npm run createFile' and press enter. Wait for it to complete.
 - Go to Source folder and you will find that file has been created.
-
-**What is the objective of this project ?**
-- This project explores the concept of stream in node.js
-- There is a CustomStreams folder in the project.
-- This folder contains two javascript files implementing a read stream class and a write stream class.
-- Node.js already provides file read stream and file write stream to read from and write to files. These are present under fs module which is a core module of node.js
-- But this project shows the implementation of custom stream class to get a deeper understanding of the concept.
 
 **How is a read stream class implemented ?**
 - Suggest to check the customReadStream.js file on the side while the below explanation is read.

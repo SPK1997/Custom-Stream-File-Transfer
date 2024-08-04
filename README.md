@@ -86,7 +86,7 @@ Code:-
 
     // subscribe to data event on read stream to get binary data from read stream in form of buffer
     // Then write the data to write stream.
-    // The write method of write stream returns false and emits 'drain' event if the chunk size is higher that writableHighWater mark.
+    // The write method of write stream returns false and emits 'drain' event if the chunk size is higher that writableHighWaterMark.
     // So we pause reading from read stream.
     rs.on('data', chunk => {
         if (!ws.write(chunk)) {
@@ -103,7 +103,7 @@ Code:-
     });
 
     // subscribe to drain event on write stream 
-    // This is to know when the write stream has completed writing and then resume the read stream.
+    // This is to know when the write stream buffer has completed writing and then resume the read stream.
     ws.on('drain', () => {
         rs.resume();
     });
@@ -118,6 +118,9 @@ Code:-
         console.log('Error in writing data to a file.');
     });
 
+
+**How backpressure is handled ?**
+Backpressure handling means a process in which the write stream can inform the read stream to pause its reading because the rate of writing is lower than rate of reading. And after the buffer for writing is completely emptied then resume reading again. Now how to know that backpressure has developed. If the chunk that comes to write stream is higher than its writableHighWaterMark then it is a confirmation that backpressure has developed. We have handled that in the above code using events. Go through the comments to get to know how it is done.
 
 **Node.js documentation links:-**<br/>
 <a href="https://nodejs.org/docs/latest/api/buffer.html">Buffer</a><br/>

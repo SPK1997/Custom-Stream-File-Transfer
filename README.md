@@ -44,7 +44,7 @@
 - It is a normal javaScript class that inherits from Readable class.
 - It has 4 methods:-<br/>
     **(a) constructor:** <br/>
-    In this method the parent class constructor is called. Then the parent class constructor will initialize a buffer that the read stream will use to read data from a file. By default it will have some value. This size value can be accessed by **readableHighWaterMark** property on the read stream class instance. You can change it by passing appropriate options to parent constructor. If **readableHighWaterMark** is set to 64KB then at a time you can read less than or equal to 64KB of data from a file.
+    In this method the parent class constructor is called. Then the parent class constructor will initialize a buffer that the read stream will use to read data from a file. By default it will have 64KB. This size value can be accessed by **readableHighWaterMark** property on the read stream class instance. You can change it by passing appropriate options to parent constructor. If **readableHighWaterMark** is set to 64KB then at a time you can read less than or equal to 64KB of data from a file.
 
     **(b) _construct:** <br/>
     This method will take a callback function as paramter. In this method we open the file we want to read from. Then we call the callback function. If we call the callback function with error then the _destroy method (point (d)) will be called and the _destroy method will take the error object and another callback function as its parameter. The _destroy method will call its callback function with the error object which in turn will emit two events 'error' and 'close'. These events can be subscribed to using the read stream class instance.
@@ -60,7 +60,7 @@
 - It is a normal javaScript class that inherits from Writable class.
 - It has 4 methods:-<br/>
     **(a) constructor:** <br/>
-    In this method the parent class constructor is called. Then the parent class constructor will initialize a buffer size property named **writableHighWaterMark**. By default it will have some value. You can change it by passing appropriate options to parent constructor.
+    In this method the parent class constructor is called. Then the parent class constructor will initialize a buffer size property named **writableHighWaterMark**. By default it will have 16KB value. You can change it by passing appropriate options to parent constructor.
 
     **(b) _construct:** <br/>
     This method will take a callback function as paramter. In this method we open the file we want to write to. Then we call the callback function. If we call the callback function with error then the _destroy method (point (d)) will be called and the _destroy method will take the error object and another callback function as its parameter. The _destroy method will call its callback function with the error object which in turn will emit two events 'error' and 'close'. These events can be subscribed to using the write stream class instance.
